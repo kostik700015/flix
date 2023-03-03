@@ -1,19 +1,38 @@
 
 <section class="movie">
-      <div class="summary">
-        <h2> <%=@movie.title %> </h2>(<%= @movie.rating %>):
-        <p>Released on: <%= year_of(@movie) %></p>  
-        <p>
-        <%= @movie.description%>
-        </p>
-        
-       <h3>Total gross: <%= total_gross(@movie) %> </h3>
-      </div>
-    </section>
+  <div class="summary">
+    <h2> <%=@movie.title %> </h2>(<%= @movie.rating %>):
+    <p>Released on: <%= year_of(@movie) %></p>  
+    <p>
+    <%= @movie.description%>
+    </p>
+  </div>
+</section>
+<section class="movie-details">
+  <div class="image">
+    <%=image_tag @movie.image_file_name %>
+  </div>
+  <div class="details">
+    <table>
+      <tr>
+        <th> Director: </th>
+        <td> <%= @movie.director %>
+      </tr>
+      <tr>
+        <th> Duration: </th>
+        <td> <%= @movie.duration %>
+      </tr>
+      <tr>
+        <th> Toatal Gross: </th>
+        <td> <%= @movie.total_gross %>
+      </tr>
+    </table>
+  </div>
+</section>
 
 
-    <section class="admin">
-      <%= link_to "Edit", edit_movie_path(@movie), class: "button" %>
-      <%= link_to "Delete", movie_path(@movie), class: "button",
-         data: { turbo_method: :delete, turbo_confirm: "Really?" } %>
-    </section>
+  <section class="admin">
+    <%= link_to "Edit", edit_movie_path(@movie), class: "button" %>
+    <%= link_to "Delete", movie_path(@movie), class: "button",
+        data: { turbo_method: :delete, turbo_confirm: "Really?" } %>
+  </section>

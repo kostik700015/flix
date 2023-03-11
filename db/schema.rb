@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_03_011036) do
     t.date "released_on"
     t.string "director"
     t.string "duration"
-    t.string "image_file_name", default: "placeholder.jpg"
+    t.string "image_file_name", default: "placeholder.png"
   end
 
 end

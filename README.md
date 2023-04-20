@@ -1,6 +1,5 @@
 The Flix
-
-That project allow to aggregate and store information about movies, reviews, ratimgs. 
+That project allows aggregating and storing information about movies, reviews, and ratings. 
 * Rails version 7.0
 * Ruby version 2.7.2
 

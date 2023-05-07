@@ -7,6 +7,9 @@
       <div class="summary">
           <h2> <%= link_to movie.title, movie %> </h2>(<%= movie.rating %>):
           <h3><%= total_gross(movie) %> </h3>
+          <span class="stars">
+            <%= render "shared/stars", percent: movie.average_stars_as_percent %>
+          </span>
         <p>
         <%= truncate(movie.description, length:150, separator: ' ')%>
         </p>

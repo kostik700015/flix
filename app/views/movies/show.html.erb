@@ -1,14 +1,19 @@
 
 <section class="movie">
   <div class="summary">
-    <h2> <%=@movie.title %> </h2>(<%= @movie.rating %>):
-    <p>Released on: <%= year_of(@movie) %></p>  
+      <h2> <%=@movie.title %> </h2>(<%= @movie.rating %>):
+      <p>Released on: <%= year_of(@movie) %></p> 
     <div class="reviews">
-      <%=  %><%= link_to pluralize(@movie.reviews.size, 'review'), movie_reviews_path(@movie)%>
+      <%= render "shared/stars", percent: @movie.average_stars_as_percent %>
+      <%= link_to pluralize(@movie.reviews.size, "review"),
+                  movie_reviews_path(@movie) %>
     </div>
-    <p>
-    <%= @movie.description%>
-    </p>
+      <span class="stars">
+        <%= average_stars(@movie) %>
+      </span> 
+      <p>
+        <%= @movie.description%>
+      </p>
   </div>
 </section>
 <section class="movie-details">

@@ -4,5 +4,7 @@
 <div class="actions">
     <%= link_to "Edit Account", edit_user_path(@user),
                     class: "button edit" %>
+    <%= link_to "Remove Account", @user, class: "button delete",
+                data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete your account?"} %>
 </div>
 </section>

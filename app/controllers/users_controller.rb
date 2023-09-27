@@ -22,10 +22,30 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find(params[:id])
+        set_user
+    end
+
+    def update
+        set_user
+        if @user.update(user_params)
+            redirect_to @user, motice: "Account Updated"
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        set_user
+        @user.destroy
+        redirect_to movies_url, status: :see_other,
+            alert: "Account was deleted!"
     end
 
     private
+
+    def set_user
+        @user = User.find(params[:id])
+    end
 
     def user_params
         params.require(:user).

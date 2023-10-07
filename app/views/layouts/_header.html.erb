@@ -10,15 +10,23 @@
      </li>
     </ul>
     <ul class="right">
-      <%if session[:user_id] %>
+      <%if current_user %>
+      <li>
+        <%=  link_to current_user.name, current_user %>
+      </li>
+      <li>
+        <%= link_to "Account Settings", edit_user_path(current_user) %>
+      </li>
+    </ul>
       <% else %>
+      <ul class="right">
         <li>
           <%= link_to "Sign In", new_session_path, class: "button" %>
         </li>
-      <% end %>
-      <li>
-        <%= link_to "Sign Up", signup_path, class: "button"  %>
-      </li>
+        <li>
+          <%= link_to "Sign Up", signin_path, class: "button"  %>
+        </li>
     </ul>
+      <% end %>
   </nav>
 </header>

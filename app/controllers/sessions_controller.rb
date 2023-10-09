@@ -11,12 +11,14 @@ class SessionsController < ApplicationController
             redirect_to user, notice: "Wlcome back, dear #{user.name}!"
         else
             flash.now[:alert] = "Combination email/password invalid"
-            remder :new, status: :unprocessable_entity
+            render :new, status: :unprocessable_entity
         end
     end
 
     def destroy
-
+        session[:user_id] = nil
+        redirect_to movies_url, status: :see_other,
+            notice: "You are signed out now!"
     end
 
 end

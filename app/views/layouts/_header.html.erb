@@ -17,14 +17,19 @@
       <li>
         <%= link_to "Account Settings", edit_user_path(current_user) %>
       </li>
+      <li>
+        <%= link_to "Sign Out", session_path,
+                              data: {turbo_method: :delete},
+                              class: "button" %>
+      </li>
     </ul>
       <% else %>
       <ul class="right">
         <li>
-          <%= link_to "Sign In", new_session_path, class: "button" %>
+          <%= link_to "Sign In", signin_path, class: "button" %>
         </li>
         <li>
-          <%= link_to "Sign Up", signin_path, class: "button"  %>
+          <%= link_to "Sign Up", signup_path, class: "button"  %>
         </li>
     </ul>
       <% end %>

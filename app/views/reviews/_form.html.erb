@@ -1,7 +1,6 @@
 <%= form_with(model: [@movie, @review]) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, autofocus: true %>
-
+  <%= render 'shared/errors', object: @review %>
+  
   <%= f.label :stars %>
   <%= f.select :stars, Review::STARS, prompt: "Pick one" %>
 

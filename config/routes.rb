@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites
 
   # Defines the root path route ("/")
   root "movies#index"

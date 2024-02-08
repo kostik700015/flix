@@ -1,4 +1,8 @@
+
 # frozen_string_literal: true
+Rails.application.routes.draw do
+  resources :favorites
+
 
 Rails.application.routes.draw do
   # Defines the root path route ("/")

@@ -1,7 +1,8 @@
-class MoviesController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :require_signin, except: [:index, :show]
-  before_action :require_admin, except: [:index, :show]
+class MoviesController < ApplicationController
+  before_action :require_signin, except: %i[index show]
+  before_action :require_admin, except: %i[index show]
 
   def index
     @movies = Movie.released
@@ -18,8 +19,8 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to @movie, notice: "Movie succesfully created!"
-    else 
+      redirect_to @movie, notice: 'Movie succesfully created!'
+    else
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,10 +29,10 @@ class MoviesController < ApplicationController
     @movie = Movie.new
   end
 
-  def update 
+  def update
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
-      redirect_to @movie, notice: "Movie succesfully updated!"
+      redirect_to @movie, notice: 'Movie succesfully updated!'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,13 +41,13 @@ class MoviesController < ApplicationController
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
-    redirect_to root_path, status: :see_other, alert: "Movie deleted!"
+    redirect_to root_path, status: :see_other, alert: 'Movie deleted!'
   end
 
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :description, :released_on, :total_gross, :rating, :director, :duration, :image_file_name)
+    params.require(:movie).permit(:title, :description, :released_on, :total_gross, :rating, :director, :duration,
+                                  :image_file_name)
   end
-
 end
